@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"); /*Rubik font import*/
+
+body {
+	background-color: rgba(13, 175, 215, 0.5);
+	margin: 0;
+	overflow: hidden;
+}
+
+p {
+	font-family: "Rubik";
+	font-size: large;
+}
+
+button {
+	border-radius: 50px;
+	background-color: rgba(138, 13, 215, 0.5);
+	border: none;
+	cursor: pointer;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+button:focus {
+	border-radius: 50px;
+	background-color: rgba(13, 132, 138, 0.5);
+	border: none;
+	cursor: pointer;
+}
+
+.text {
+	position: absolute;
+	font-size: 20px;
+	font-weight: bold;
+	font-family: "Rubik";
+}
+
+#score {
+	position: fixed;
+	top: 10px;
+	right: 10px;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+div {
+	font-family: "Rubik";
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+#scoreDisplay {
+	position: absolute;
+	left: 0px;
+	top: 20px;
+	font-weight: bold;
+}
+
+#credits {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+}
+
+#level {
+	position: absolute;
+	left: 0px;
+	top: 40px;
+	font-weight: bold;
+}
