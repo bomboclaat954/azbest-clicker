@@ -1,31 +1,40 @@
 document.addEventListener("DOMContentLoaded", function () {
     var _a, _b;
     var intervalId;
+    var papajEnabled = false;
     var score = 0;
-    var level = 1;
+    var muteButton = document.getElementById("muteButton");
     var audio = document.getElementById("backgroundAudio");
+    var barka = document.getElementById("barka");
     var scoreDisplay = document.getElementById("scoreDisplay");
+    var body = document.getElementById("body");
+    barka.pause();
     var createAzbest = function () {
         audio.play();
-        var text = document.createElement("button");
-        text.textContent = "azbest";
-        text.classList.add("text");
+        var azbest = document.createElement("button");
+        azbest.textContent = "azbest";
+        azbest.classList.add("azbest");
         var startX = Math.random() * window.innerWidth;
         var startY = Math.random() * window.innerHeight;
-        text.style.left = "".concat(startX, "px");
-        text.style.top = "".concat(startY, "px");
-        document.body.appendChild(text);
-        text.addEventListener("click", function () {
-            score += 1;
-            scoreDisplay.textContent = "Score: ".concat(score);
-            text.remove();
-            updateLevel();
+        azbest.style.left = "".concat(startX, "px");
+        azbest.style.top = "".concat(startY, "px");
+        document.body.appendChild(azbest);
+        azbest.addEventListener("click", function () {
+            if (papajEnabled == false) {
+                score += 1;
+                scoreDisplay.textContent = "Score: ".concat(score);
+                azbest.remove();
+                changeColor();
+            }
+            else {
+                azbest.remove();
+            }
         });
         var moveUp = function () {
-            var currentTop = parseFloat(text.style.top);
-            text.style.top = "".concat(currentTop - 1, "px");
-            if (currentTop < -text.clientHeight) {
-                text.remove();
+            var currentTop = parseFloat(azbest.style.top);
+            azbest.style.top = "".concat(currentTop - 1, "px");
+            if (currentTop < -azbest.clientHeight) {
+                azbest.remove();
             }
             else {
                 requestAnimationFrame(moveUp);
@@ -33,10 +42,12 @@ document.addEventListener("DOMContentLoaded", function () {
         };
         moveUp();
     };
-    var updateLevel = function () {
+    var changeColor = function () {
         if (score % 10 === 0 && score !== 0) {
-            level++;
             document.body.style.backgroundColor = getRandomColorRGBA();
+            if (papajEnabled == false) {
+                spawnPapaj();
+            }
         }
     };
     var getRandomColorRGBA = function () {
@@ -51,14 +62,13 @@ document.addEventListener("DOMContentLoaded", function () {
     };
     var resetAnimation = function () {
         audio.currentTime = 0;
-        document.querySelectorAll(".text").forEach(function (text) { return text.remove(); });
+        document.querySelectorAll(".azbest").forEach(function (azbest) { return azbest.remove(); });
         clearInterval(intervalId);
         score = 0;
         scoreDisplay.textContent = "Score: ".concat(score);
         startAnimation();
     };
     var mute = function () {
-        var muteButton = document.getElementById("muteButton");
         if (audio.muted == false) {
             muteButton.textContent = "Unmute";
             audio.muted = true;
@@ -68,6 +78,45 @@ document.addEventListener("DOMContentLoaded", function () {
             audio.muted = false;
         }
     };
+    var img = document.createElement("img");
+    img.src = "papaj.jpeg";
+    img.width = 100;
+    img.height = 100;
+    img.style.position = "absolute";
+    img.style.display = "none";
+    document.body.appendChild(img);
+    function setRandomPosition() {
+        var maxX = window.innerWidth - img.width;
+        var maxY = window.innerHeight - img.height;
+        var randomX = Math.floor(Math.random() * maxX);
+        var randomY = Math.floor(Math.random() * maxY);
+        img.style.left = "".concat(randomX, "px");
+        img.style.top = "".concat(randomY, "px");
+    }
+    function showPapaj() {
+        img.style.display = "block";
+        setRandomPosition();
+    }
+    function hidePapaj() {
+        img.style.display = "none";
+    }
+    function spawnPapaj() {
+        showPapaj();
+        setTimeout(hidePapaj, 1000);
+    }
+    function onPapajClick() {
+        body.style.backgroundImage = "papaj.jpeg";
+        papajEnabled = true;
+        audio.muted = true;
+        muteButton.style.display = "none";
+        resetAnimation();
+        barka.currentTime = 0;
+        barka.muted = false;
+        score = 2137;
+        scoreDisplay.textContent = "Score: ".concat(score);
+        barka.play();
+    }
+    img.addEventListener("click", onPapajClick);
     (_a = document
         .getElementById("resetButton")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", resetAnimation);
     (_b = document.getElementById("muteButton")) === null || _b === void 0 ? void 0 : _b.addEventListener("click", mute);
