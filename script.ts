@@ -14,9 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	const scoreDisplay: HTMLElement = document.getElementById(
 		"scoreDisplay"
 	) as HTMLElement;
-	const body: HTMLBodyElement = document.getElementById(
-		"body"
-	) as HTMLBodyElement;
 
 	barka.pause();
 
@@ -56,9 +53,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	const changeColor = (): void => {
 		if (score % 10 === 0 && score !== 0) {
-			document.body.style.backgroundColor = getRandomColorRGBA();
 			if (papajEnabled == false) {
 				spawnPapaj();
+				document.body.style.backgroundColor = getRandomColorRGBA();
 			}
 		}
 	};
@@ -127,6 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	function onPapajClick() {
 		papajEnabled = true;
+		console.log("PAPAJ MODE ENABLED!!!");
 		audio.muted = true;
 		muteButton.style.display = "none";
 		resetAnimation();
@@ -136,6 +134,14 @@ document.addEventListener("DOMContentLoaded", () => {
 		scoreDisplay.textContent = `Score: ${score}`;
 		barka.play();
 	}
+
+	const srcBtn: HTMLButtonElement = document.getElementById(
+		"source"
+	) as HTMLButtonElement;
+
+	srcBtn.addEventListener("click", () => {
+		window.location.href = "https://github.com/bomboclaat954/azbest-clicker";
+	});
 
 	img.addEventListener("click", onPapajClick);
 

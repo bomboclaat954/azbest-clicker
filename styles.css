@@ -68,10 +68,3 @@ div {
 	bottom: 0px;
 	left: 0px;
 }
-
-#level {
-	position: absolute;
-	left: 0px;
-	top: 40px;
-	font-weight: bold;
-}
