@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var audio = document.getElementById("backgroundAudio");
     var barka = document.getElementById("barka");
     var scoreDisplay = document.getElementById("scoreDisplay");
+    var img = document.getElementById("imgPapaj");
     barka.pause();
     var createAzbest = function () {
         audio.play();
@@ -77,11 +78,6 @@ document.addEventListener("DOMContentLoaded", function () {
             audio.muted = false;
         }
     };
-    var img = document.createElement("img");
-    img.src = "papaj.jpeg";
-    img.width = 100;
-    img.height = 100;
-    img.style.position = "absolute";
     img.style.display = "none";
     document.body.appendChild(img);
     function setRandomPosition() {

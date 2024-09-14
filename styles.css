@@ -68,3 +68,11 @@ div {
 	bottom: 0px;
 	left: 0px;
 }
+
+img {
+	position: absolute;
+}
+
+#imgPapaj {
+	display: none;
+}

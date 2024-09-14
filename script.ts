@@ -14,6 +14,9 @@ document.addEventListener("DOMContentLoaded", () => {
 	const scoreDisplay: HTMLElement = document.getElementById(
 		"scoreDisplay"
 	) as HTMLElement;
+	const img: HTMLImageElement = document.getElementById(
+		"imgPapaj"
+	) as HTMLImageElement;
 
 	barka.pause();
 
@@ -91,11 +94,6 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 	};
 
-	const img = document.createElement("img");
-	img.src = "papaj.jpeg";
-	img.width = 100;
-	img.height = 100;
-	img.style.position = "absolute";
 	img.style.display = "none";
 	document.body.appendChild(img);
 
