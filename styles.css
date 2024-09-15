@@ -1,4 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"); /*Rubik font import*/
+@font-face {
+	font-family: "SFpro";
+	src: url("assets/SF-Pro-Display-Bold.otf");
+}
 
 body {
 	background-color: rgba(13, 175, 215, 0.5);
@@ -7,7 +10,7 @@ body {
 }
 
 p {
-	font-family: "Rubik";
+	font-family: "SFpro";
 	font-size: large;
 }
 
@@ -35,7 +38,7 @@ button:focus {
 	position: absolute;
 	font-size: 20px;
 	font-weight: bold;
-	font-family: "Rubik";
+	font-family: "SFpro";
 }
 
 #score {
@@ -47,7 +50,7 @@ button:focus {
 }
 
 div {
-	font-family: "Rubik";
+	font-family: "SFpro";
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-khtml-user-select: none;
